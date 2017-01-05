@@ -1,13 +1,13 @@
-package recursiveMethods;
+package fast_power;
 
 import java.util.Scanner;
 
-public class RecursiveRun {
+public class FastRun {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		Recursive1 recursive1 = new Recursive1();
-		Recursive2 recursive2 = new Recursive2();
+		Fast1 fast1 = new Fast1();
+		Fast2 fast2 = new Fast2();
 		
 		Scanner keyboard = new Scanner(System.in);
 		System.out.println("Please input the base : ");
@@ -16,14 +16,14 @@ public class RecursiveRun {
 		int power = keyboard.nextInt();
 		
 		long preTime = System.nanoTime();
-		double ans1 = recursive1.recursive_1(base, power);
+		double ans1 = fast1.fastPower(base, power);
 		long aftTime = System.nanoTime();
 		long currentTime = aftTime - preTime;
 		System.out.println("First try Answer : " + ans1);
 		System.out.println("First try Cost time : " + currentTime + " nanosec");
 		
 		preTime = System.nanoTime();
-		double ans2 = recursive2.recursive_2(base, power);
+		double ans2 = fast2.fastPower2(base, power);
 		aftTime = System.nanoTime();
 		currentTime = aftTime - preTime;
 		System.out.println("Second try Answer : " + ans2);
@@ -38,9 +38,12 @@ public class RecursiveRun {
 		
 		double ansLoop = 1;
 		long preTime3 = System.nanoTime();
-		for (int i = 0; i < power; i++) {
+		int up = Math.abs(power);
+		for (int i = 0; i < up; i++) {
 			ansLoop *= base;
 		}
+		if (power < 0)
+			ansLoop = 1.0/ansLoop;
 		long aftTime3 = System.nanoTime();
 		long currentTime3 = aftTime3 - preTime3;
 		System.out.println("Loop Answer : " + ansLoop);
