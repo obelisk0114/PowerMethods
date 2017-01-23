@@ -20,6 +20,16 @@ public class Fast1 {
 		if (n == 0) {
 			return 1;
 		}
+		else if (x == 1) {
+			return 1;
+		}
+		else if (x == -1) {
+			if ((n & 1) == 1) {
+				return -1;
+			}
+			else
+				return 1;
+		}
 		int rslt = 1;
 		boolean positive = true;
 		if (n < 0) {
